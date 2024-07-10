@@ -1,12 +1,13 @@
-import {useCallback, useRef, useState} from 'react';
+import {useCallback, useRef} from 'react';
 import {axiosInstance} from '../network';
 import {TMovieAction, TMovieData} from '../constants/types';
 import {NETWORK_URLS} from '../constants/networkUrls';
 import {ITEMS_PER_PAGE} from '../constants/appConstants';
 
-export const useFetchMovieData = (dispatch: React.Dispatch<TMovieAction>) => {
-  const [isLoading, setIsLoading] = useState(false);
-
+export const useFetchMovieData = (
+  dispatch: React.Dispatch<TMovieAction>,
+  isLoading: boolean,
+) => {
   const page = useRef(1);
   const hasMore = useRef(true);
 
@@ -15,16 +16,19 @@ export const useFetchMovieData = (dispatch: React.Dispatch<TMovieAction>) => {
       return;
     }
 
-    try {
-      setIsLoading(true);
+    dispatch({
+      type: 'data_fetching_start',
+      payload: {},
+    });
 
+    try {
       const response = await axiosInstance.get<TMovieData>(
         `${NETWORK_URLS.MOVIES_ENDPOINT}CONTENTLISTINGPAGE-PAGE${page.current}.json`,
       );
       const result = response.data;
 
       dispatch({
-        type: 'update_data',
+        type: 'data_fetching_end',
         payload: result.page?.['content-items'] ?? {},
       });
 
@@ -48,10 +52,8 @@ export const useFetchMovieData = (dispatch: React.Dispatch<TMovieAction>) => {
       page.current += 1;
     } catch (error) {
       console.error('Error fetching movie data:', error);
-    } finally {
-      setIsLoading(false);
     }
   }, [dispatch, isLoading]);
 
-  return {fetchData, isLoading};
+  return {fetchData};
 };

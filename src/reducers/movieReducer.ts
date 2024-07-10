@@ -1,16 +1,30 @@
-import {TContentItems, TMovieAction} from '../constants/types';
+import {TContentItem, TMovieAction} from '../constants/types';
+
+type TInitialState = {
+  isLoading: boolean;
+  content: TContentItem[];
+};
+
+export const initialState: TInitialState = {
+  isLoading: false,
+  content: [],
+};
 
 export function movieReducer(
-  state: TContentItems,
+  state: TInitialState,
   action: TMovieAction,
-): TContentItems {
+): TInitialState {
   switch (action.type) {
-    case 'update_data':
+    case 'data_fetching_start':
+      return {...state, isLoading: true};
+
+    case 'data_fetching_end':
       return {
         content: [
           ...(state?.content ?? []),
           ...(action.payload?.content ?? []),
         ],
+        isLoading: false,
       };
 
     default:

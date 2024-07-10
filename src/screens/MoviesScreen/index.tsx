@@ -6,22 +6,21 @@ import ListEmptyComponent from '../../components/ListEmptyComponent';
 import {styles} from './styles';
 import {Separator} from '../../components/Separator';
 import {useFetchMovieData} from '../../hooks/useFetchMovieData';
-import {movieReducer} from '../../reducers/movieReducer';
+import {initialState, movieReducer} from '../../reducers/movieReducer';
 import renderItem from './renderItem';
 import useFilteredData from '../../hooks/useFilteredData';
 
 const MoviesScreen = () => {
-  const [movieData, dispatch] = useReducer(movieReducer, {content: []});
+  const [{isLoading, content}, dispatch] = useReducer(
+    movieReducer,
+    initialState,
+  );
   const [searchText, setSearchText] = useState<string>('');
   const [isSearchActive, setIsSearchActive] = useState<boolean>(false);
 
-  const {fetchData, isLoading} = useFetchMovieData(dispatch);
+  const {fetchData} = useFetchMovieData(dispatch, isLoading);
 
-  const filteredData = useFilteredData(
-    movieData.content,
-    searchText,
-    isSearchActive,
-  );
+  const filteredData = useFilteredData(content, searchText, isSearchActive);
 
   useEffect(() => {
     fetchData();

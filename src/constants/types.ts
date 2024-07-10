@@ -21,6 +21,6 @@ export type TMovieData = {
 };
 
 export type TMovieAction = {
-  type: 'update_data';
+  type: 'data_fetching_start' | 'data_fetching_end';
   payload: TContentItems;
 };
