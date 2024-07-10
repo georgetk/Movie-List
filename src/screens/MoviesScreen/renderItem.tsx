@@ -8,6 +8,7 @@ const renderItem: ListRenderItem<TContentItem> = ({item}) => {
   const {name, 'poster-image': posterImage} = item;
 
   let imageSource = posterImages.fallback;
+
   if (posterImage && Object.keys(posterImages).includes(posterImage)) {
     imageSource = posterImages[posterImage as keyof typeof posterImages];
   }
