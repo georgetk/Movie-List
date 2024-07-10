@@ -6,7 +6,7 @@ const useFilteredData = (
   query: string,
   isSearchActive: boolean,
 ): TContentItem[] | undefined => {
-  const filterData = useCallback(
+  const filterFunction = useCallback(
     (
       dataToFilter: TContentItem[] | undefined,
       searchQuery: string,
@@ -22,8 +22,8 @@ const useFilteredData = (
   );
 
   const filteredData = useMemo(() => {
-    return isSearchActive ? filterData(data, query) : data;
-  }, [isSearchActive, data, query, filterData]);
+    return isSearchActive ? filterFunction(data, query) : data;
+  }, [isSearchActive, data, query, filterFunction]);
 
   return filteredData;
 };

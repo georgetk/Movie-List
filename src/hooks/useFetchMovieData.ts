@@ -23,8 +23,6 @@ export const useFetchMovieData = (dispatch: React.Dispatch<TMovieAction>) => {
       );
       const result = response.data;
 
-      console.log(result);
-
       dispatch({
         type: 'update_data',
         payload: result.page?.['content-items'] ?? {},

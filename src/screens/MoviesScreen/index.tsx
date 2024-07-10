@@ -17,15 +17,15 @@ const MoviesScreen = () => {
 
   const {fetchData, isLoading} = useFetchMovieData(dispatch);
 
-  useEffect(() => {
-    fetchData();
-  }, []);
-
   const filteredData = useFilteredData(
     movieData.content,
     searchText,
     isSearchActive,
   );
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   const keyExtractor = useCallback(
     (item: TContentItem, index: number) => `${item.name}-${index}`,
