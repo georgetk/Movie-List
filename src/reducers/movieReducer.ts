@@ -20,10 +20,8 @@ export function movieReducer(
 
     case 'data_fetching_end':
       return {
-        content: [
-          ...(state?.content ?? []),
-          ...(action.payload?.content ?? []),
-        ],
+        ...state,
+        content: [...state.content, ...(action.payload?.content ?? [])],
         isLoading: false,
       };
 

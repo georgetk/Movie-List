@@ -35,17 +35,15 @@ export const useFetchMovieData = (
       const currentContentItems =
         result.page?.['content-items']?.content?.length ?? 0;
 
-      let combinedContentLength = currentContentItems;
-      if (page.current !== 1) {
-        combinedContentLength += (page.current - 1) * ITEMS_PER_PAGE;
-      }
+      const combinedContentLength =
+        currentContentItems + (page.current - 1) * ITEMS_PER_PAGE;
 
       const totalContentItems = parseInt(
         result.page?.['total-content-items'] ?? '0',
         10,
       );
 
-      if (totalContentItems === combinedContentLength) {
+      if (totalContentItems <= combinedContentLength) {
         hasMore.current = false;
       }
 

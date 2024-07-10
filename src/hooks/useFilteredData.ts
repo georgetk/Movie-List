@@ -1,4 +1,4 @@
-import {useMemo, useCallback} from 'react';
+import {useMemo} from 'react';
 import {TContentItem} from '../constants/types';
 
 const useFilteredData = (
@@ -6,24 +6,19 @@ const useFilteredData = (
   query: string,
   isSearchActive: boolean,
 ): TContentItem[] | undefined => {
-  const filterFunction = useCallback(
-    (
-      dataToFilter: TContentItem[] | undefined,
-      searchQuery: string,
-    ): TContentItem[] | undefined => {
-      if (!dataToFilter) {
-        return [];
-      }
-      return dataToFilter.filter(item =>
-        item.name?.toLowerCase().includes(searchQuery.toLowerCase()),
-      );
-    },
-    [],
-  );
-
   const filteredData = useMemo(() => {
-    return isSearchActive ? filterFunction(data, query) : data;
-  }, [isSearchActive, data, query, filterFunction]);
+    if (!isSearchActive) {
+      return data;
+    }
+
+    if (!data) {
+      return [];
+    }
+
+    return data.filter(item =>
+      item.name?.toLowerCase().includes(query.toLowerCase()),
+    );
+  }, [isSearchActive, data, query]);
 
   return filteredData;
 };

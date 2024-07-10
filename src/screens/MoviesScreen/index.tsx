@@ -19,7 +19,6 @@ const MoviesScreen = () => {
   const [isSearchActive, setIsSearchActive] = useState<boolean>(false);
 
   const {fetchData} = useFetchMovieData(dispatch, isLoading);
-
   const filteredData = useFilteredData(content, searchText, isSearchActive);
 
   useEffect(() => {
@@ -50,7 +49,7 @@ const MoviesScreen = () => {
         showsVerticalScrollIndicator={false}
         showsHorizontalScrollIndicator={false}
         onEndReached={fetchData}
-        onEndReachedThreshold={0.5}
+        onEndReachedThreshold={0.8}
         ItemSeparatorComponent={Separator}
         ListEmptyComponent={!isLoading ? <ListEmptyComponent /> : null}
       />
