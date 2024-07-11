@@ -23,3 +23,7 @@
     <img src="./android.gif" alt="Android demo" width="200" />
   </div> 
 </div>
+
+|    iOS demo     |   Android demo   |
+|   -----------   |   ------------   |
+| ![](./iOS.gif)  |![](./android.gif)|
