@@ -10,15 +10,15 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-between',
     flex: 1,
     alignItems: 'center',
-    gap: 15,
+    gap: 10,
   },
   itemContainer: {
     flex: 1,
     alignItems: 'center',
   },
   itemImage: {
-    width: 115,
-    height: 165,
+    width: 105,
+    height: 155,
   },
   itemTextContainer: {
     marginTop: 8,
