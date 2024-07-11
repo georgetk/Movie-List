@@ -9,9 +9,11 @@
 - Unit tests created for the following hooks: ✅
     - useFetchMovieData
     - useFilteredData
-    - useNotchHeight
 - Handled edge cases: ✅
     - Fallback image displayed when no corresponding image found
     - Long text truncated with ellipsis using numberOfLines set to 1
 
-![iOS demo](./iOS.gif) ![Android demo](./android.gif)
+<div style="display: flex; justify-content: center;">
+  <img src="./iOS.gif" alt="iOS demo" width="400" />
+  <img src="./android.gif" alt="Android demo" width="400" />
+</div>
