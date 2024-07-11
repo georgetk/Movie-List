@@ -15,11 +15,11 @@
 
 <div style="display: flex; justify-content: center;">
   <div style="flex: 1; text-align: center;">
-    <h3>iOS</h3>
+    <!-- <h3>iOS</h3> -->
     <img src="./iOS.gif" alt="iOS demo" width="300" />
   </div>
   <div style="flex: 1; text-align: center;">
-    <h3>Android</h3>
+    <!-- <h3>Android</h3> -->
     <img src="./android.gif" alt="Android demo" width="300" />
   </div>
 </div>
