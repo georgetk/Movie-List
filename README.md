@@ -14,11 +14,11 @@
     - Long text truncated with ellipsis using numberOfLines set to 1
 
 <div style="display: flex; justify-content: center;">
-    <div style="text-align: center; margin-right: 20px;">
+    <div style="text-align: center;">
         <h3>iOS</h3>
         <img src="./iOS.gif" alt="iOS demo" width="300" />
     </div>
-    <div style="text-align: center; margin-right: 20px;">
+    <div style="text-align: center;">
         <h3>Android</h3>
         <img src="./android.gif" alt="Android demo" width="300" />
     </div>
