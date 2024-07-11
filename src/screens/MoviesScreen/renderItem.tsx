@@ -7,9 +7,11 @@ import {posterImages} from '../../constants/images';
 const renderItem: ListRenderItem<TContentItem> = ({item}) => {
   const {name, 'poster-image': posterImage} = item;
 
+  // Assigning placeholder_for_missing_posters.png as the fallback image by default
   let imageSource = posterImages.fallback;
 
   if (posterImage && Object.keys(posterImages).includes(posterImage)) {
+    // Current posterImage is a key of the pre-defined posterImages object
     imageSource = posterImages[posterImage as keyof typeof posterImages];
   }
 

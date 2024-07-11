@@ -13,6 +13,7 @@ export const useFetchMovieData = (
 
   const fetchData = useCallback(async () => {
     if (isLoading || !hasMore.current) {
+      // API call already started or no more items to fetch
       return;
     }
 
@@ -32,18 +33,21 @@ export const useFetchMovieData = (
         payload: result.page?.['content-items'] ?? {},
       });
 
-      const currentContentItems =
+      const currentContentItemsInResponse =
         result.page?.['content-items']?.content?.length ?? 0;
 
-      const combinedContentLength =
-        currentContentItems + (page.current - 1) * ITEMS_PER_PAGE;
+      // Count of items that are currently available in app
+      const totalContentItemsFetched =
+        currentContentItemsInResponse + (page.current - 1) * ITEMS_PER_PAGE;
 
-      const totalContentItems = parseInt(
+      // Total count of items available at the server side
+      const totalContentItemsAvailable = parseInt(
         result.page?.['total-content-items'] ?? '0',
         10,
       );
 
-      if (totalContentItems <= combinedContentLength) {
+      if (totalContentItemsAvailable <= totalContentItemsFetched) {
+        // We have fetched all the items
         hasMore.current = false;
       }
 

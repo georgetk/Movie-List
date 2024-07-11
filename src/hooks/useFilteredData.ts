@@ -8,6 +8,7 @@ const useFilteredData = (
 ): TContentItem[] | undefined => {
   const filteredData = useMemo(() => {
     if (!isSearchActive) {
+      // User is not searching, so return the whole data
       return data;
     }
 
@@ -15,6 +16,7 @@ const useFilteredData = (
       return [];
     }
 
+    // User is searching, so apply filter and only return the matching data
     return data.filter(item =>
       item.name?.toLowerCase().includes(query.toLowerCase()),
     );

@@ -8,10 +8,13 @@ export const useNotchHeight = (): number => {
   const IOS_ADDITIONAL_HEIGHT = 5;
 
   if (Platform.OS === 'android') {
-    return StatusBar.currentHeight
-      ? StatusBar.currentHeight / 3
-      : ANDROID_DEFAULT_HEIGHT;
+    let androidHeight = ANDROID_DEFAULT_HEIGHT;
+    if (StatusBar.currentHeight) {
+      androidHeight = StatusBar.currentHeight / 3;
+    }
+    return androidHeight;
   } else {
-    return insets.top + IOS_ADDITIONAL_HEIGHT;
+    let iOSHeight = insets.top + IOS_ADDITIONAL_HEIGHT;
+    return iOSHeight;
   }
 };
