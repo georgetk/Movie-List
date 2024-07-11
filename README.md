@@ -13,17 +13,6 @@
     - Fallback image displayed when no corresponding image found
     - Long text truncated with ellipsis using numberOfLines set to 1
 
-<div style="display: flex; justify-content: center;">
-  <div style="flex: 1; text-align: center;"> 
-    <h3>iOS</h3> 
-    <img src="./iOS.gif" alt="iOS demo" width="200" />
-  </div> 
-  <div style="flex: 1; text-align: center;"> 
-    <h3>Android</h3> 
-    <img src="./android.gif" alt="Android demo" width="200" />
-  </div> 
-</div>
-
 |    iOS demo     |   Android demo   |
 |   -----------   |   ------------   |
 | ![](./iOS.gif)  |![](./android.gif)|
